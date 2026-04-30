@@ -21,6 +21,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "preproc_dpu.h"
 #include "main.h"
+#include "app_config.h"
+#include "ai_model_config.h"
 
 #ifdef USE_HSP
 #include "hsp_cnn.h"
@@ -168,16 +170,16 @@ DPU_StatusTypeDef AudioPreProc_DPU(AudioPreProcCtx_t * pxCtx, uint8_t *pDataIn, 
     p_in = (int16_t *)pDataIn + CTRL_X_CUBE_AI_SPECTROGRAM_HOP_LENGTH * i;
     
     LogMelSpectrogramColumn_q15_Q8(&pxCtx->S_LogMelSpectr, p_in,out,pxCtx->out_Q_offset,pxCtx->out_Q_inv_scale);
-    
-#ifdef NO_TRANSPOSE
-    memcpy(p_spectro + i *  pxCtx->S_MelFilter.NumMels, out, pxCtx->S_MelFilter.NumMels);
-#else
+
+  #if (CTRL_X_CUBE_AI_MODEL_NO_TRANSPOSE == 1)
+    memcpy(p_spectro + i * pxCtx->S_MelFilter.NumMels, out, pxCtx->S_MelFilter.NumMels);
+  #else
     /* transpose */
-    for (uint32_t j=0 ; j < pxCtx->S_MelFilter.NumMels ; j++ )
+    for (uint32_t j = 0; j < pxCtx->S_MelFilter.NumMels; j++)
     {
-      p_spectro[i+CTRL_X_CUBE_AI_SPECTROGRAM_COL*j]= out[j];
+      p_spectro[i + CTRL_X_CUBE_AI_SPECTROGRAM_COL * j] = out[j];
     }
-#endif
+  #endif
     
   }
   time_stats_store(TIME_STAT_PRE_PROC,port_dwt_get_cycles()*1000.0F/port_hal_get_cpu_freq());

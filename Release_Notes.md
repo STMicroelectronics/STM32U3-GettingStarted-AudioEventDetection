@@ -32,6 +32,10 @@ before exposing the results to the user in real time.
 
 ## Update history
 
+### v1.1.0 / April 2026
+
+- Deployable in model zoo
+
 ### v1.0.0 / March 2026
 
 Initial release

@@ -31,6 +31,7 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 #define CTRL_X_CUBE_AI_MODEL_NAME                "AED YAMNET 256"
+#define CTRL_X_CUBE_AI_MODEL_NO_TRANSPOSE        1
 #define CTRL_X_CUBE_AI_MODEL_NB_OUTPUT           (1U)
 #define CTRL_X_CUBE_AI_MODEL_OUTPUT_1            (CTRL_AI_CLASS_DISTRIBUTION)
 #define CTRL_X_CUBE_AI_MODEL_CLASS_NUMBER        (5U)

@@ -206,7 +206,7 @@ void PrintCpuStatsSummary(void)
     time_stats_get_cnt(TIME_STAT_AI_PROC));
   LogSys("| Average (ms)                |        %8.2f|      %8.2f|\r\n",\
     Pre_avg,AI_avg);
-  LogSys("| Relative load (%%)          |        %8.2f|      %8.2f|\r\n",\
+  LogSys("| Relative load (%%)           |        %8.2f|      %8.2f|\r\n",\
     100*time_stats_get_sum(TIME_STAT_PRE_PROC) / time_stats_get_runtime(),\
     100*time_stats_get_sum(TIME_STAT_AI_PROC) / time_stats_get_runtime() );
   LogSys(SEPARATION_LINE,"\n\r");

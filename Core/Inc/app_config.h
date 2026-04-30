@@ -34,8 +34,6 @@
 #define APP_CONF_STR "Bare Metal"
 #define CPU_STATS
 #define MENU_DISP_PERIOD (1000)
-
-#define NO_TRANSPOSE 1
 #define SEPARATION_LINE "---------------------------------------------------------------\n\r"
 
 #endif /* __APP_CONFIG_H__ */
